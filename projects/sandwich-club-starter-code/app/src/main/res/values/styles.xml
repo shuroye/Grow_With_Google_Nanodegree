@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="textViewStyles">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">@dimen/dimens0_dp</item>
+        <item name="android:layout_height">@dimen/dimens33_dp</item>
+        <item name="android:layout_marginEnd">@dimen/dimens8_dp</item>
+        <item name="android:layout_marginLeft">@dimen/dimens8_dp</item>
+        <item name="android:layout_marginRight">@dimen/dimens8_dp</item>
+        <item name="android:layout_marginStart">@dimen/dimens8_dp</item>
+        <item name="android:layout_marginTop">@dimen/dimens1_dp</item>
+    </style>
+
 </resources>

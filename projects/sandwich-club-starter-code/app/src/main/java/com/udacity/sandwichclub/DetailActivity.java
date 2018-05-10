@@ -22,10 +22,24 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
+
+    private ImageView ingredientsIv;//image
+    private TextView aka_tv;//alsoKnowAs
+    private TextView placeOfOrigin_tv;//placeOfOrigin
+    private TextView description_tv;//description
+    private TextView ing_tv;//ingredients
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        //reference respecitve text/image views
+        ingredientsIv = findViewById(R.id.image_iv);
+        aka_tv =  findViewById(R.id.also_known_tv);
+        placeOfOrigin_tv =  findViewById(R.id.origin_tv) ;
+        description_tv =  findViewById(R.id.description_tv) ;
+        ing_tv =  findViewById(R.id.ingredients_tv);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -60,10 +74,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich selected_sandwich)  {
 
-        //image
-        ImageView ingredientsIv;
-        ingredientsIv = findViewById(R.id.image_iv);
-
+        //load image
         Picasso.with(this)
                 .load(selected_sandwich.getImage())
                 .into(ingredientsIv);
@@ -71,22 +82,20 @@ public class DetailActivity extends AppCompatActivity {
         setTitle(selected_sandwich.getMainName());
 
         //Sandich alsoKnownAs UI element
-        TextView aka_tv =  findViewById(R.id.also_known_tv);
         List<String> aka_list = selected_sandwich.getAlsoKnownAs();
         String str_akaList = processList(aka_list);
         aka_tv.setText(str_akaList);
         aka_tv.setText(str_akaList);
 
         //Sandwish placeOfOrigin UI element
-        TextView placeOfOrigin_tv =  findViewById(R.id.origin_tv) ;
+
         placeOfOrigin_tv.setText(selected_sandwich.getPlaceOfOrigin());
 
         //Sandwich descrition UI element
-        TextView description_tv =  findViewById(R.id.description_tv) ;
         description_tv.setText(selected_sandwich.getDescription());
 
         //Sandwich ingredients UI element
-        TextView ing_tv =  findViewById(R.id.ingredients_tv);
+
         List<String> ing_list = selected_sandwich.getIngredients();
         String str_ingList = processList(ing_list);
         ing_tv.setText(str_ingList);

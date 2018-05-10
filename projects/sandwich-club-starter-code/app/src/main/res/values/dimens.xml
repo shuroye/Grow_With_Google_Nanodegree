@@ -2,4 +2,14 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="dimens8_dp">8dp</dimen>
+    <dimen name="dimens0_dp">0dp</dimen>
+    <dimen name="dimens100_dp">100dp</dimen>
+    <dimen name="dimens2_dp">2dp</dimen>
+    <dimen name="dimens20_dp">20dp</dimen>
+    <dimen name="dimens33_dp">33dp</dimen>
+    <dimen name="dimens1_dp">1dp</dimen>
+    <dimen name="dimens05_dp">.5dp</dimen>
+    <dimen name="dimens01_dp">.1dp</dimen>
+    <dimen name="dimens4_dp">4dp</dimen>
 </resources>
