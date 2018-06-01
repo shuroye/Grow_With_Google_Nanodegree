@@ -13,7 +13,9 @@ import java.util.Scanner;
  */
 public class MovieNetworkUtils {
 
-    public static String getMovies(URL url) throws IOException {
+
+    public static String getMovies(String strURL) throws IOException {
+        URL url = new URL(strURL);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
 
@@ -24,6 +26,7 @@ public class MovieNetworkUtils {
             InputStream in = urlConnection.getInputStream();
 
             Scanner scanner = new Scanner(in);
+            scanner.useDelimiter("\\A");
 
             boolean hasInput = scanner.hasNext();
             if (hasInput) {

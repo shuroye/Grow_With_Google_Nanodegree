@@ -1,7 +1,6 @@
 package com.strataanalytics.popularmoviesstage1.Model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Movie {
 

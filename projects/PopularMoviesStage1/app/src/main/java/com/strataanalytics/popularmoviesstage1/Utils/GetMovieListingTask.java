@@ -8,11 +8,10 @@ import com.strataanalytics.popularmoviesstage1.MovieNetworkUtils.MovieNetworkUti
 import java.io.IOException;
 import java.net.URL;
 
-import static com.strataanalytics.popularmoviesstage1.MainActivity.strMovies;
 
 public class GetMovieListingTask {
-
-    public static class GetMoviesTask extends AsyncTask<String,String,String>{
+String strMovies;
+    public  class GetMoviesTask extends AsyncTask<String,String,String>{
 
         public GetMoviesTask() {
             super();
@@ -37,7 +36,7 @@ public class GetMovieListingTask {
         protected String doInBackground(String... strings) {
             try{
                 URL url = new URL("http://api.themoviedb.org/3/movie/popular?api_key=6934f53708a2aa88621270ea9c7bc940");
-                strMovies =  MovieNetworkUtils.getMovies(url);
+               // strMovies =  MovieNetworkUtils.getMovies(strUrl);
                 System.out.println(strMovies);
 
                return  strMovies;
