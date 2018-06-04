@@ -18,7 +18,7 @@ public class Movie {
     private boolean bol_IsAdult;
     private String strOverview;
     private String strRelease_date;
-    private ArrayList<String> image_list;
+    private static ArrayList<String> image_list;
 
     public Movie(){
 

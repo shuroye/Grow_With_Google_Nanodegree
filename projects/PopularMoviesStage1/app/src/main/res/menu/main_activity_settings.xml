@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
    <item android:id="@+id/settings_id"
          android:title="@string/settings"
-       app:showAsAction="never">
+       app:showAsAction="ifRoom">
       <menu>
          <group android:id="@+id/sort_group"
              android:checkableBehavior="single">
+            <item android:id="@+id/sort_most_popular_id"
+                android:title="@string/group_most_popular"
+                android:checked="true"/>
+
             <item android:id="@+id/sort_top_rating_id"
                 android:title="@string/group_top_rating"
-                android:checked="true"/>
-            <item android:id="@+id/sort_most_popular_id"
-                android:title="@string/group_most_popular" />
+                />
+
          </group>
       </menu>
    </item>

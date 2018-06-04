@@ -12,10 +12,15 @@ import java.util.Scanner;
  * and process the results for the calling modules.
  */
 public class MovieNetworkUtils {
+   private String url;
 
+    public MovieNetworkUtils(String url) {
+        this.url = url;
+    }
 
-    public static String getMovies(String strURL) throws IOException {
-        URL url = new URL(strURL);
+    public  String getMovies() throws IOException {
+
+        URL url = new URL(this.url);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
 

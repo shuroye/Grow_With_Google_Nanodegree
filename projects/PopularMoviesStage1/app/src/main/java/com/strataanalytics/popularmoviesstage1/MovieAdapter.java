@@ -11,15 +11,14 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder> {
+public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder> {
 
-    private List<String> movieList;
+    private ArrayList<String> movieList;
     private LayoutInflater  layoutInflater;
-
     // data is passed into the constructor
-    MovieAdapter(Context context, List<String> movieList) {
+    MovieAdapter(Context context, ArrayList<String> movieList) {
         this.layoutInflater = LayoutInflater.from(context);
         this.movieList = movieList;
     }
@@ -33,7 +32,6 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder>
     }
 
     // binds the data to the Imaage in each row
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
        String strMovie = movieList.get(position);
@@ -42,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder>
        Picasso.with(context)
                .load(strMovie)
                .into(holder.imageView);
-      }
+}
 
     //total number of rows in list
     @Override
@@ -64,7 +62,7 @@ public class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder>
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(), view.getId() + "",
+            Toast.makeText(view.getContext(), getAdapterPosition() + "",
                     Toast.LENGTH_SHORT).show();
 
         }

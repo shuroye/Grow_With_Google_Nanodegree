@@ -9,24 +9,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-
-import com.strataanalytics.popularmoviesstage1.Model.Movie;
+import com.strataanalytics.popularmoviesstage1.Data.GetMoviePreferences;
 import com.strataanalytics.popularmoviesstage1.MovieNetworkUtils.MovieNetworkUtils;
 import com.strataanalytics.popularmoviesstage1.Utils.JsonUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    String strSortOrder;
-    public  static String strMovies;
-    private  static final String TAG = "myTask";
+    final String TAG = "myTask";
+    static String strUrl = ""; //http://api.themoviedb.org/3/movie/popular?api_key=6934f53708a2aa88621270ea9c7bc940";
+    static int movieOrder = 0;
 
-    static String strMovieURL =   "http://api.themoviedb.org/3/movie/popular?api_key=6934f53708a2aa88621270ea9c7bc940";
 
-    MovieAdapter movieAdapter;
+   static MovieAdapter movieAdapter;
+   RecyclerView recyclerView;
+   static GridLayoutManager gridLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,85 +34,101 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         try {
-                // data to populate the RecyclerView with
-                new GetMoviesTask().execute();
 
-                Movie movies =  JsonUtils.parseMovieJson(strMovies);
+               //   MovieTask movieTask = new MovieTask();
+               //   movieTask.execute();
+            loadMovies();
 
-                if(movies != null) {
-
-                    // set up the RecyclerView
-                    GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
-                    RecyclerView recyclerView = findViewById(R.id.movies_rv);
-                    recyclerView.setLayoutManager(gridLayoutManager);
-                    movieAdapter = new MovieAdapter(this, movies.getImage_list());
-                    recyclerView.setAdapter(movieAdapter);
-                }else {
-                    closeOnError();
-                }
         }catch (Exception e){
             Log.d(TAG, e.getMessage());
         }
     }
-    private void closeOnError() {
-        Toast.makeText(this, "Movies do not exist!", Toast.LENGTH_LONG).show();
+    public class MovieTask extends AsyncTask<String,String,String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            MovieNetworkUtils movieNetworkUtils = new MovieNetworkUtils(strUrl);
+            String results = "";
+            //get the list of movies (JSON) from the server
+            try {
+               results   = movieNetworkUtils.getMovies();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return results;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            //movieAdapter = new MovieAdapter(MainActivity.this,  image_list);
+
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            try {
+
+                ArrayList<String> image_list;
+
+                //Process Server data
+                JsonUtils jsonUtils = new JsonUtils();
+                image_list = jsonUtils.parseMovieJson(s);
+
+                //populate UI
+                gridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
+                recyclerView = findViewById(R.id.movies_rv);
+                recyclerView.setLayoutManager(gridLayoutManager);
+                movieAdapter = new MovieAdapter(MainActivity.this, image_list);
+                recyclerView.setAdapter(movieAdapter);
+                movieAdapter.notifyDataSetChanged();
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_activity_settings,menu);
+
+        inflater.inflate(R.menu.main_activity_settings, menu);
 
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.sort_top_rating_id:
-                strSortOrder = item.getTitle().toString();
-                return true;
-            case R.id.sort_most_popular_id:
-                strSortOrder = item.getTitle().toString();
-                return true;
-        }
+        int itemSelected_id = item.getItemId();
 
+        if(itemSelected_id == R.id.sort_top_rating_id) {
+            movieOrder = 1;
+            loadMovies();
+        }else{
+            movieOrder = 0;
+            loadMovies();
+
+        }
+        System.out.println(movieOrder);
+        movieAdapter.notifyDataSetChanged();
         return super.onOptionsItemSelected(item);
     }
 
-    public static class GetMoviesTask extends AsyncTask<String,String,String>{
+    public void loadMovies(){
+        strUrl = GetMoviePreferences.setPreferedMovieOrder(this,movieOrder);
+        MovieTask movieTask = new MovieTask();
+        movieTask.execute(strUrl);
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-
-            super.onPostExecute(s);
-        }
-
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected String doInBackground(String... strings) {
-            try{
-                //send request to server and store response in strMovies
-                strMovies = MovieNetworkUtils.getMovies(strMovieURL);
-               // Log.v(TAG, strMovies);
-               // return  strMovies;
-            }catch (IOException e){
-                return null;
-            }
-            return strMovies;
-        }
     }
-
-
-
 }
+
 
