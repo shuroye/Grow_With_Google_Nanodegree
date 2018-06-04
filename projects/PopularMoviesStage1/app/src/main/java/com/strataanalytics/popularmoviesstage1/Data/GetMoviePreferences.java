@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class GetMoviePreferences {
 
-  private static final  String my_api_key = "your key";
+  private static final  String my_api_key = "";
    //By Most Popular Moview
     private static final String DEFAULT_MOVIE_ORDER = "https://api.themoviedb.org/3/movie/popular?api_key=" + my_api_key;
 
@@ -24,7 +24,7 @@ public class GetMoviePreferences {
    }
 
    private static String getDefaultMovieOrder(){
-       return PREFERED_MOVIE_ORDER;
+       return DEFAULT_MOVIE_ORDER;
    }
 
     private static String getPreferedMovieOrder(){
