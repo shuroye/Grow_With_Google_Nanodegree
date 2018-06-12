@@ -1,10 +1,13 @@
 package com.strataanalytics.popularmoviesstage1.MovieNetworkUtils;
 
 
+import android.content.Context;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 /**
@@ -37,8 +40,12 @@ public class MovieNetworkUtils {
             if (hasInput) {
                 return scanner.next();
             } else {
+
                 return null;
             }
+        }catch (UnknownHostException e){
+            System.out.println(e.getMessage());
+            return  url.toString();
         } finally {
             urlConnection.disconnect();
         }

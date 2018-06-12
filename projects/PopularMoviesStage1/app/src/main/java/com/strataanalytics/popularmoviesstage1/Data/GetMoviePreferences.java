@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class GetMoviePreferences {
 
-  private static final  String my_api_key = "";
+  private static final  String my_api_key = "6934f53708a2aa88621270ea9c7bc940";
    //By Most Popular Moview
     private static final String DEFAULT_MOVIE_ORDER = "https://api.themoviedb.org/3/movie/popular?api_key=" + my_api_key;
 

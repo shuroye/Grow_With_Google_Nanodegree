@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.strataanalytics.popularmoviesstage1.Data.GetMoviePreferences;
+import com.strataanalytics.popularmoviesstage1.Model.Movie;
 import com.strataanalytics.popularmoviesstage1.MovieNetworkUtils.MovieNetworkUtils;
 import com.strataanalytics.popularmoviesstage1.Utils.JsonUtils;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     final String TAG = "myTask";
-    static String strUrl = ""; //http://api.themoviedb.org/3/movie/popular?api_key=6934f53708a2aa88621270ea9c7bc940";
+    static String strUrl = "";
     static int movieOrder = 0;
 
 
@@ -34,11 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         try {
-
-               //   MovieTask movieTask = new MovieTask();
-               //   movieTask.execute();
+            //get the list of movies. Default is Popular movies
             loadMovies();
-
         }catch (Exception e){
             Log.d(TAG, e.getMessage());
         }
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Process Server data
                 JsonUtils jsonUtils = new JsonUtils();
-                image_list = jsonUtils.parseMovieJson(s);
+                image_list =  jsonUtils.parseMovieJson(s);
 
                 //populate UI
                 gridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
@@ -112,16 +110,21 @@ public class MainActivity extends AppCompatActivity {
 
         if(itemSelected_id == R.id.sort_top_rating_id) {
             movieOrder = 1;
+            item.setChecked(true);
             loadMovies();
+            return true;
+        }else if (itemSelected_id == R.id.settings_id){
+             ;//do nothing
+
         }else{
             movieOrder = 0;
+            item.setChecked(true);
             loadMovies();
-
         }
-        System.out.println(movieOrder);
         movieAdapter.notifyDataSetChanged();
         return super.onOptionsItemSelected(item);
     }
+
 
     public void loadMovies(){
         strUrl = GetMoviePreferences.setPreferedMovieOrder(this,movieOrder);

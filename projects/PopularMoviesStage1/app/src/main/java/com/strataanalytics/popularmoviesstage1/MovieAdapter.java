@@ -1,6 +1,7 @@
 package com.strataanalytics.popularmoviesstage1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,12 +11,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.strataanalytics.popularmoviesstage1.Model.Movie;
 
 import java.util.ArrayList;
 
 public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder> {
 
     private ArrayList<String> movieList;
+    private ArrayList<Integer> movieIds;
     private LayoutInflater  layoutInflater;
     // data is passed into the constructor
     MovieAdapter(Context context, ArrayList<String> movieList) {
@@ -40,7 +43,7 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
        Picasso.with(context)
                .load(strMovie)
                .into(holder.imageView);
-}
+   }
 
     //total number of rows in list
     @Override
@@ -62,10 +65,13 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(), getAdapterPosition() + "",
+            String strImg = movieList.get(getAdapterPosition());
+            Toast.makeText(view.getContext(),strImg,
                     Toast.LENGTH_SHORT).show();
-
         }
+    }
+    public void launchMovieDetailActivity(Movie movie){
+
     }
 
 }
