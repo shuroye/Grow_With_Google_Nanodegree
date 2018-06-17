@@ -1,5 +1,6 @@
 package com.strataanalytics.popularmoviesstage1;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,23 +12,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.strataanalytics.popularmoviesstage1.Data.GetMoviePreferences;
-import com.strataanalytics.popularmoviesstage1.Model.Movie;
 import com.strataanalytics.popularmoviesstage1.MovieNetworkUtils.MovieNetworkUtils;
 import com.strataanalytics.popularmoviesstage1.Utils.JsonUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     final String TAG = "myTask";
     static String strUrl = "";
     static int movieOrder = 0;
+    static List<Integer> movieId;
+    static String movieJSON;
 
 
    static MovieAdapter movieAdapter;
    RecyclerView recyclerView;
    static GridLayoutManager gridLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +72,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(String movieJSON) {
 
             try {
 
-                ArrayList<String> image_list;
+               List<String> image_list;
+               movieJSON = movieJSON;
 
                 //Process Server data
                 JsonUtils jsonUtils = new JsonUtils();
-                image_list =  jsonUtils.parseMovieJson(s);
+                image_list =  jsonUtils.parseMovieJson(movieJSON);
+                //movieId    =  jsonUtils.getMovieIDS(s);
 
                 //populate UI
                 gridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
@@ -132,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
         movieTask.execute(strUrl);
 
     }
+
+
 }
 
 

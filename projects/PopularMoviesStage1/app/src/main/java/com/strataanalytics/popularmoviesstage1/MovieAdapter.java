@@ -4,26 +4,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.strataanalytics.popularmoviesstage1.Model.Movie;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.List;
 
 public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder> {
 
-    private ArrayList<String> movieList;
-    private ArrayList<Integer> movieIds;
+    private List<String> movieList;
+
     private LayoutInflater  layoutInflater;
+    private Context context;
+
     // data is passed into the constructor
-    MovieAdapter(Context context, ArrayList<String> movieList) {
+    MovieAdapter(Context context,List<String> movieList) {
         this.layoutInflater = LayoutInflater.from(context);
         this.movieList = movieList;
+        this.context = context;
     }
 
     // inflates the row layout from xml when needed
@@ -48,7 +53,8 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
     //total number of rows in list
     @Override
     public int getItemCount() {
-        return movieList.size();
+
+        return movieList == null? 0:  movieList.size();
     }
 
     // stores and recycles views as they are scrolled off screen
@@ -65,13 +71,38 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
 
         @Override
         public void onClick(View view) {
-            String strImg = movieList.get(getAdapterPosition());
-            Toast.makeText(view.getContext(),strImg,
-                    Toast.LENGTH_SHORT).show();
+            List<Integer> movieIds;
+            int pos = getLayoutPosition();
+           // movieIds = MainActivity.movieId;
+
+          //Call MovieDetail with the movie id
+         // launchMovieDetailActivity(333);
+
         }
     }
-    public void launchMovieDetailActivity(Movie movie){
 
-    }
+   private void launchMovieDetailActivity(int index){
+
+        String movieJSON = MainActivity.movieJSON;
+       String strBaseUrl = "http://image.tmdb.org/t/p/w342/";
+      try {
+          JSONObject jsonObject = new JSONObject(movieJSON);
+          JSONArray resultJSONArray = jsonObject.getJSONArray("results");
+          JSONObject obj = resultJSONArray.getJSONObject(index);
+
+          //get details
+          String test = strBaseUrl + obj.getString("poster_path");
+          Log.d("TEST", test);
+      }catch (Exception e){
+          e.printStackTrace();
+      }
+
+
+       Intent intent = new Intent();
+       intent.setClass(context,MovieDetailActivity.class);
+       intent.putExtra("movieID", index);
+
+       context.startActivity(intent);
+   }
 
 }

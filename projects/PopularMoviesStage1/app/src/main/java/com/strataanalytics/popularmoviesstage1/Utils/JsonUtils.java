@@ -1,20 +1,24 @@
 package com.strataanalytics.popularmoviesstage1.Utils;
 
 
+import com.strataanalytics.popularmoviesstage1.Model.Movie;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class JsonUtils {
 
-    public  ArrayList<String> parseMovieJson(String json){
+    public  List<String> parseMovieJson(String json){
         final String strResult   = "results";
         final String poster_path = "poster_path";
 
-        ArrayList<String> resultArray = new ArrayList<>();
+       List<String> resultArray = new ArrayList<>();
+
 
         try {
 
@@ -38,5 +42,7 @@ public class JsonUtils {
         }
         return resultArray;
     }
+
+
 }
 

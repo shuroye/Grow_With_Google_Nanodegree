@@ -1,8 +1,11 @@
 package com.strataanalytics.popularmoviesstage1.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Movie {
+public class Movie implements Parcelable {
 
     private int intVote_count;
     private int intId;
@@ -11,18 +14,11 @@ public class Movie {
     private String strTitle;
     private float fPopularity;
     private String strPoster_path;
-    private String strOriginal_language;
-    private String strOriginal_title;
-    private int[] intList_genre_ids;
-    private String strBackdrop_path;
     private boolean bol_IsAdult;
     private String strOverview;
     private String strRelease_date;
-    private static ArrayList<String> image_list;
 
-    public Movie(){
 
-    }
     public Movie(
             int vote_count,
             int id,
@@ -31,15 +27,9 @@ public class Movie {
             String title,
             float popularity,
             String poster_path,
-            String original_language,
-            String original_title,
-            int[] list_genre_ids,
-            String backdrop_path,
             boolean isAdult,
             String overview,
-            String release_date,
-            ArrayList<String> image_list){
-
+            String release_date )    {
         this.intVote_count = vote_count;
         this.intId =  id;
         this.bol_IsVideo = isVideo;
@@ -47,113 +37,77 @@ public class Movie {
         this.strTitle =  title;
         this.fPopularity = popularity;
         this.strPoster_path =  poster_path;
-        this.strOriginal_language = original_language;
-        this.strOriginal_title = original_title;
-        this.intList_genre_ids = list_genre_ids;
-        this.strBackdrop_path = backdrop_path;
         this.bol_IsAdult = isAdult;
         this.strOverview =  overview;
         this.strRelease_date = release_date;
-        this.image_list = image_list;
 
     }
-    public int getVote_count() {
+
+    public int getIntVote_count() {
         return intVote_count;
     }
 
-    public void setVote_count(int intVote_count) {
+    public void setIntVote_count(int intVote_count) {
         this.intVote_count = intVote_count;
     }
 
-    public int getId() {
+    public int getIntId() {
         return intId;
     }
 
-    public void setId(int intId) {
+    public void setIntId(int intId) {
         this.intId = intId;
     }
 
-    public boolean isVideo() {
+    public boolean isBol_IsVideo() {
         return bol_IsVideo;
     }
 
-    public void setIsVideo(boolean bol_IsVideo) {
+    public void setBol_IsVideo(boolean bol_IsVideo) {
         this.bol_IsVideo = bol_IsVideo;
     }
 
-    public float getVote_average() {
+    public float getfVote_average() {
         return fVote_average;
     }
 
-    public void setVote_average(float fVote_average) {
+    public void setfVote_average(float fVote_average) {
         this.fVote_average = fVote_average;
     }
 
-    public String getTitle() {
+    public String getStrTitle() {
         return strTitle;
     }
 
-    public void setTitle(String strTitle) {
+    public void setStrTitle(String strTitle) {
         this.strTitle = strTitle;
     }
 
-    public float getPopularity() {
+    public float getfPopularity() {
         return fPopularity;
     }
 
-    public void setPopularity(float fPopularity) {
+    public void setfPopularity(float fPopularity) {
         this.fPopularity = fPopularity;
     }
 
-    public String getPoster_path() {
+    public String getStrPoster_path() {
         return strPoster_path;
     }
 
-    public void setPoster_path(String strPoster_path) {
+    public void setStrPoster_path(String strPoster_path) {
         this.strPoster_path = strPoster_path;
     }
 
-    public String getOriginal_language() {
-        return strOriginal_language;
-    }
-
-    public void setOriginal_language(String strOriginal_language) {
-        this.strOriginal_language = strOriginal_language;
-    }
-
-    public String getOriginal_title() {
-        return strOriginal_title;
-    }
-
-    public void setOriginal_title(String strOriginal_title) {
-        this.strOriginal_title = strOriginal_title;
-    }
-
-    public int[] getList_genre_ids() {
-        return intList_genre_ids;
-    }
-
-    public void setList_genre_ids(int[] intList_genre_ids) {
-        this.intList_genre_ids = intList_genre_ids;
-    }
-
-    public String getBackdrop_path() {
-        return strBackdrop_path;
-    }
-
-    public void setBackdrop_path(String strBackdrop_path) {
-        this.strBackdrop_path = strBackdrop_path;
-    }
-
-    public boolean isAdult() {
+    public boolean isBol_IsAdult() {
         return bol_IsAdult;
     }
 
-    public void setIsAdult(boolean bol_IsAdult) {
+    public void setBol_IsAdult(boolean bol_IsAdult) {
         this.bol_IsAdult = bol_IsAdult;
     }
 
-    public String getOverview() {
+    public String getStrOverview() {
         return strOverview;
     }
 
@@ -169,11 +123,58 @@ public class Movie {
         this.strRelease_date = strRelease_date;
     }
 
-    public ArrayList<String> getImage_list() {
-        return image_list;
+    /*
+
+       Placelable methods
+     */
+    //Create Constructor used for the parcel
+    public Movie(Parcel parcel){
+        intVote_count = parcel.readInt();
+        intId = parcel.readInt();
+        bol_IsVideo = (Boolean) parcel.readValue(getClass().getClassLoader());
+        fVote_average = parcel.readFloat();
+        strTitle =  parcel.readString();
+        fPopularity = parcel.readFloat();
+        strPoster_path = parcel.readString();
+        bol_IsAdult = (Boolean)parcel.readValue(getClass().getClassLoader());
+        strOverview =  parcel.readString();
+        strRelease_date = parcel.readString();
+
     }
 
-    public void setImage_list(ArrayList<String> image_list) {
-        this.image_list = image_list;
+    //creator
+    public static final Parcelable.Creator<Movie> CREATOR = new
+            Parcelable.Creator<Movie>(){
+
+                @Override
+                public Movie createFromParcel(Parcel source) {
+                    return null;
+                }
+
+                @Override
+                public Movie[] newArray(int size) {
+                    return new Movie[0];
+                }
+            };
+
+    @Override
+    public int describeContents() {
+        return hashCode();
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(intId);
+        dest.writeValue(bol_IsVideo);
+        dest.writeDouble(fVote_average);
+        dest.writeString(strTitle);
+        dest.writeDouble(fPopularity);
+        dest.writeString(strPoster_path);
+        dest.writeValue(bol_IsAdult);
+        dest.writeString(strOverview);
+        dest.writeString(strRelease_date);
+
+    }
+
+
 }
