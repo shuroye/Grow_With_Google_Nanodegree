@@ -18,7 +18,9 @@ public class Movie implements Parcelable {
     private String strOverview;
     private String strRelease_date;
 
-
+    public Movie(){
+      super();
+    }
     public Movie(
             int vote_count,
             int id,
@@ -46,82 +48,32 @@ public class Movie implements Parcelable {
     public int getIntVote_count() {
         return intVote_count;
     }
-
-    public void setIntVote_count(int intVote_count) {
-        this.intVote_count = intVote_count;
-    }
-
     public int getIntId() {
         return intId;
     }
-
-    public void setIntId(int intId) {
-        this.intId = intId;
-    }
-
-    public boolean isBol_IsVideo() {
+    public boolean getIsVideo() {
         return bol_IsVideo;
     }
-
-    public void setBol_IsVideo(boolean bol_IsVideo) {
-        this.bol_IsVideo = bol_IsVideo;
-    }
-
-    public float getfVote_average() {
+    public float getVote_average() {
         return fVote_average;
     }
-
-    public void setfVote_average(float fVote_average) {
-        this.fVote_average = fVote_average;
-    }
-
-    public String getStrTitle() {
-        return strTitle;
-    }
-
-    public void setStrTitle(String strTitle) {
-        this.strTitle = strTitle;
-    }
-
-    public float getfPopularity() {
+    public String getTitle() {  return strTitle;  }
+    public float getPopularity() {
         return fPopularity;
     }
-
-    public void setfPopularity(float fPopularity) {
-        this.fPopularity = fPopularity;
-    }
-
     public String getStrPoster_path() {
         return strPoster_path;
     }
-
-    public void setStrPoster_path(String strPoster_path) {
-        this.strPoster_path = strPoster_path;
-    }
-
-    public boolean isBol_IsAdult() {
+    public boolean getIsAdult() {
         return bol_IsAdult;
     }
-
-    public void setBol_IsAdult(boolean bol_IsAdult) {
-        this.bol_IsAdult = bol_IsAdult;
-    }
-
-    public String getStrOverview() {
+    public String getOverview() {
         return strOverview;
     }
-
-    public void setStrOverview(String strOverview) {
-        this.strOverview = strOverview;
-    }
-
-    public String getStrRelease_date() {
+    public String getRelease_date() {
         return strRelease_date;
     }
 
-    public void setStrRelease_date(String strRelease_date) {
-        this.strRelease_date = strRelease_date;
-    }
 
     /*
 

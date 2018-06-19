@@ -12,23 +12,24 @@ import java.util.List;
 
 
 public class JsonUtils {
-
+    private JSONObject jsonObject;
+    private JSONArray resultJSONArray;
     public  List<String> parseMovieJson(String json){
         final String strResult   = "results";
         final String poster_path = "poster_path";
 
-       List<String> resultArray = new ArrayList<>();
+        List<String> resultArray = new ArrayList<>();
 
 
         try {
 
             String strBaseUrl = "http://image.tmdb.org/t/p/w342/";
 
-            JSONObject jsonObject = new JSONObject(json);
+            jsonObject = new JSONObject(json);
 
             //Get Results Array
 
-            JSONArray resultJSONArray = jsonObject.getJSONArray(strResult);
+            resultJSONArray = jsonObject.getJSONArray(strResult);
 
             //Process results and get the image path
             for (int i = 0; i < resultJSONArray.length(); i++){
@@ -43,6 +44,7 @@ public class JsonUtils {
         return resultArray;
     }
 
-
+    public JSONArray getResultJSONArray() {
+        return resultJSONArray;
+    }
 }
-

@@ -15,6 +15,8 @@ import com.strataanalytics.popularmoviesstage1.Data.GetMoviePreferences;
 import com.strataanalytics.popularmoviesstage1.MovieNetworkUtils.MovieNetworkUtils;
 import com.strataanalytics.popularmoviesstage1.Utils.JsonUtils;
 
+import org.json.JSONArray;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
     final String TAG = "myTask";
     static String strUrl = "";
     static int movieOrder = 0;
-    static List<Integer> movieId;
-    static String movieJSON;
+    static JSONArray jsonArray;
 
 
    static MovieAdapter movieAdapter;
@@ -72,23 +73,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(String movieJSON) {
+        protected void onPostExecute(String s) {
 
             try {
 
                List<String> image_list;
-               movieJSON = movieJSON;
 
                 //Process Server data
                 JsonUtils jsonUtils = new JsonUtils();
-                image_list =  jsonUtils.parseMovieJson(movieJSON);
-                //movieId    =  jsonUtils.getMovieIDS(s);
+                image_list =  jsonUtils.parseMovieJson(s);
+                jsonArray  =   jsonUtils.getResultJSONArray();
 
                 //populate UI
                 gridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
                 recyclerView = findViewById(R.id.movies_rv);
                 recyclerView.setLayoutManager(gridLayoutManager);
-                movieAdapter = new MovieAdapter(MainActivity.this, image_list);
+                movieAdapter = new MovieAdapter(MainActivity.this, image_list,jsonArray);
                 recyclerView.setAdapter(movieAdapter);
                 movieAdapter.notifyDataSetChanged();
 
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             loadMovies();
             return true;
         }else if (itemSelected_id == R.id.settings_id){
-             ;//do nothing
+            movieOrder = -1;
 
         }else{
             movieOrder = 0;
