@@ -23,13 +23,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    final String TAG = "myTask";
-    static String strUrl = "";
+    final String TAG = "TASK";
+   static String strUrl = "";
     static int movieOrder = 0;
     static JSONArray jsonArray;
 
 
-   static MovieAdapter movieAdapter;
+   MovieAdapter movieAdapter;
    RecyclerView recyclerView;
    static GridLayoutManager gridLayoutManager;
 

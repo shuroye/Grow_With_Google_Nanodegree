@@ -9,9 +9,115 @@
     <TextView
         android:id="@+id/title_TextView"
         android:layout_width="446dp"
-        android:layout_height="112dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="86dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="2dp"
+        android:background="@color/backGround"
+        android:textColor="@color/textColorWhite"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_iv"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/selected_movie_picture"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_TextView" />
+
+    <TextView
+        android:id="@+id/release_dt_tv"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@+id/image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/title_TextView" />
+
+    <TextView
+        android:id="@+id/movie_duration_tv"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/release_dt_tv"
+        />
+    <TextView
+    android:id="@+id/movie_rating_tv"
+    android:layout_width="80dp"
+    android:layout_height="50dp"
+    android:textSize="15sp"
+    android:textStyle="bold"
+    android:layout_marginEnd="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/image_iv"
+    app:layout_constraintTop_toBottomOf="@+id/movie_duration_tv"
+    />
+    <TextView
+        android:id="@+id/movie_fav_tv"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:textStyle="bold"
+        android:background="@color/backGround_2"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/movie_rating_tv"
+        />
+
+    <TextView
+        android:id="@+id/movie_overview_tv"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_iv" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="368dp"
+        android:layout_height="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movie_overview_tv" />
+
 </android.support.constraint.ConstraintLayout>

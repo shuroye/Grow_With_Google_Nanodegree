@@ -2,7 +2,6 @@ package com.strataanalytics.popularmoviesstage1;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -76,7 +75,6 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
         @Override
         public void onClick(View view) {
             try {
-                int pos = getLayoutPosition();
                 int vote_count = movieArray.getJSONObject(getLayoutPosition()).getInt("vote_count");
                 int id = movieArray.getJSONObject(getLayoutPosition()).getInt("id");
                 boolean isVideo = movieArray.getJSONObject(getLayoutPosition()).getBoolean("video");
@@ -115,12 +113,15 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
     }
 
    private void launchMovieDetailActivity(Movie movie){
+     if(movie != null) {
+         Intent intent = new Intent();
+         intent.setClass(context.getApplicationContext(), MovieDetailActivity.class);
 
-       Intent intent = new Intent();
-       intent.setClass(context.getApplicationContext(),MovieDetailActivity.class);
-
-       intent.putExtra("MOVIE_DETAIL", movie);
-       context.startActivity(intent);
+         intent.putExtra("MOVIE_DETAIL", movie);
+         context.startActivity(intent);
+     }else {
+         Log.d("MOVIE", "Error");
+     }
    }
 
 }

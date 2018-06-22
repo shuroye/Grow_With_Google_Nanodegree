@@ -1,8 +1,6 @@
 package com.strataanalytics.popularmoviesstage1.Utils;
 
 
-import com.strataanalytics.popularmoviesstage1.Model.Movie;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,8 +10,9 @@ import java.util.List;
 
 
 public class JsonUtils {
-    private JSONObject jsonObject;
+
     private JSONArray resultJSONArray;
+
     public  List<String> parseMovieJson(String json){
         final String strResult   = "results";
         final String poster_path = "poster_path";
@@ -24,7 +23,7 @@ public class JsonUtils {
         try {
 
             String strBaseUrl = "http://image.tmdb.org/t/p/w342/";
-
+            JSONObject jsonObject;
             jsonObject = new JSONObject(json);
 
             //Get Results Array

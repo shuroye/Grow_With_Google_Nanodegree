@@ -18,9 +18,7 @@ public class Movie implements Parcelable {
     private String strOverview;
     private String strRelease_date;
 
-    public Movie(){
-      super();
-    }
+
     public Movie(
             int vote_count,
             int id,
@@ -75,58 +73,47 @@ public class Movie implements Parcelable {
     }
 
 
-    /*
-
-       Placelable methods
-     */
-    //Create Constructor used for the parcel
-    public Movie(Parcel parcel){
-        intVote_count = parcel.readInt();
-        intId = parcel.readInt();
-        bol_IsVideo = (Boolean) parcel.readValue(getClass().getClassLoader());
-        fVote_average = parcel.readFloat();
-        strTitle =  parcel.readString();
-        fPopularity = parcel.readFloat();
-        strPoster_path = parcel.readString();
-        bol_IsAdult = (Boolean)parcel.readValue(getClass().getClassLoader());
-        strOverview =  parcel.readString();
-        strRelease_date = parcel.readString();
-
-    }
-
-    //creator
-    public static final Parcelable.Creator<Movie> CREATOR = new
-            Parcelable.Creator<Movie>(){
-
-                @Override
-                public Movie createFromParcel(Parcel source) {
-                    return null;
-                }
-
-                @Override
-                public Movie[] newArray(int size) {
-                    return new Movie[0];
-                }
-            };
-
     @Override
     public int describeContents() {
-        return hashCode();
+        return 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(intId);
-        dest.writeValue(bol_IsVideo);
-        dest.writeDouble(fVote_average);
-        dest.writeString(strTitle);
-        dest.writeDouble(fPopularity);
-        dest.writeString(strPoster_path);
-        dest.writeValue(bol_IsAdult);
-        dest.writeString(strOverview);
-        dest.writeString(strRelease_date);
-
+        dest.writeInt(this.intVote_count);
+        dest.writeInt(this.intId);
+        dest.writeByte(this.bol_IsVideo ? (byte) 1 : (byte) 0);
+        dest.writeFloat(this.fVote_average);
+        dest.writeString(this.strTitle);
+        dest.writeFloat(this.fPopularity);
+        dest.writeString(this.strPoster_path);
+        dest.writeByte(this.bol_IsAdult ? (byte) 1 : (byte) 0);
+        dest.writeString(this.strOverview);
+        dest.writeString(this.strRelease_date);
     }
 
+    protected Movie(Parcel in) {
+        this.intVote_count = in.readInt();
+        this.intId = in.readInt();
+        this.bol_IsVideo = in.readByte() != 0;
+        this.fVote_average = in.readFloat();
+        this.strTitle = in.readString();
+        this.fPopularity = in.readFloat();
+        this.strPoster_path = in.readString();
+        this.bol_IsAdult = in.readByte() != 0;
+        this.strOverview = in.readString();
+        this.strRelease_date = in.readString();
+    }
 
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }
