@@ -34,16 +34,16 @@ public class MovieDetailActivity extends AppCompatActivity {
 
 
       if(movie != null){
-
+         String fake_data = 120 + "MIN";
           String mTitle = movie.getTitle();
           title_tv.setText(mTitle);
-
+          String vote_average = movie.getVote_average()+getString(R.string.slash)+ 10;
           Picasso.with(getApplicationContext())
                   .load(strBaseUrl + movie.getStrPoster_path())
                   .into(imageView);
            release_dt_tv.setText(movie.getRelease_date().substring(0,4));
-           mov_runtime_tv.setText(120 + getString(R.string.MIN));
-           movie_rating_tv.setText(movie.getVote_average()+getString(R.string.slash)+ 10);
+           mov_runtime_tv.setText(fake_data);
+           movie_rating_tv.setText(vote_average);
            mov_fav_tv.setText(R.string.MAF);
            mov_overview_tv.setText(movie.getOverview());
       }else {

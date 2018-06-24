@@ -1,18 +1,21 @@
 package com.strataanalytics.popularmoviesstage1.Data;
 
-import android.content.Context;
 
-public class GetMoviePreferences {
+public  class  GetMoviePreferences {
 
-  private static final  String my_api_key = "6934f53708a2aa88621270ea9c7bc940";
+  private static int movie_id = 0;
+  private static final  String my_api_key = "Put your API Key here";
+
    //By Most Popular Moview
-    private static final String DEFAULT_MOVIE_ORDER = "https://api.themoviedb.org/3/movie/popular?api_key=" + my_api_key;
+  private static final String DEFAULT_MOVIE_ORDER = "https://api.themoviedb.org/3/movie/popular?api_key=" + my_api_key;
 
 
     //By Top Rating
-    private static final String PREFERED_MOVIE_ORDER = "https://api.themoviedb.org/3/movie/top_rated?api_key=" + my_api_key;
+  private static final String PREFERED_MOVIE_ORDER = "https://api.themoviedb.org/3/movie/top_rated?api_key=" + my_api_key;
 
-   public static String setPreferedMovieOrder(Context context, int movieOrder){
+  private static final String MOVIE_DETAIL_REQUEST_URL = "https://api.themoviedb.org/3/movie/"+movie_id+"?api_key=" + my_api_key;
+
+   public static String setPreferedMovieOrder( int movieOrder){
         int movie_order;
         movie_order = movieOrder;
 
@@ -29,6 +32,20 @@ public class GetMoviePreferences {
 
     private static String getPreferedMovieOrder(){
         return PREFERED_MOVIE_ORDER;
+    }
+
+    private static int setMovieID(int id){
+
+       if (id == Integer.parseInt(null)) {
+           return movie_id = 0;
+       }else{
+           movie_id = id;
+           return movie_id = id;
+       }
+
+    }
+    private static String getMovieDetailRequestUrl(){
+        return MOVIE_DETAIL_REQUEST_URL;
     }
 
 }

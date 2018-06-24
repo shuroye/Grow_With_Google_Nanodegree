@@ -1,6 +1,5 @@
 package com.strataanalytics.popularmoviesstage1;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ import com.strataanalytics.popularmoviesstage1.Utils.JsonUtils;
 import org.json.JSONArray;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            //movieAdapter = new MovieAdapter(MainActivity.this,  image_list);
 
         }
 
@@ -133,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void loadMovies(){
-        strUrl = GetMoviePreferences.setPreferedMovieOrder(this,movieOrder);
+        strUrl = GetMoviePreferences.setPreferedMovieOrder(movieOrder);
         MovieTask movieTask = new MovieTask();
         movieTask.execute(strUrl);
 

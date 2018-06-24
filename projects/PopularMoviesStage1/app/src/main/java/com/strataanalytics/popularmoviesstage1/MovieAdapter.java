@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.strataanalytics.popularmoviesstage1.Data.GetMoviePreferences;
+import com.strataanalytics.popularmoviesstage1.Data.GetMoviePreferences.*;
 import com.strataanalytics.popularmoviesstage1.Model.Movie;
 
 import com.squareup.picasso.Picasso;
@@ -87,7 +89,6 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
                 String release_date = movieArray.getJSONObject(getLayoutPosition()).getString("release_date");
 
 
-
              // Movie movie = new Movie();
               Movie movie = new Movie(
                  vote_count,
@@ -101,7 +102,6 @@ public  class MovieAdapter extends RecyclerView.Adapter <MovieAdapter.ViewHolder
                  overview,
                  release_date );
 
-               // Log.d("TEST1", movie.getTitle() + "");
                 //Call MovieDetail with the movie id
                 launchMovieDetailActivity(movie);
             }catch (Exception e){
