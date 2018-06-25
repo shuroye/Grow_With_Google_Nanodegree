@@ -1,12 +1,17 @@
 package com.strataanalytics.popularmoviesstage1.Data;
 
 
-import com.strataanalytics.popularmoviesstage1.BuildConfig;
+import android.content.res.Resources;
+import android.support.annotation.StringRes;
+
+import com.strataanalytics.popularmoviesstage1.R;
 
 public  class  GetMoviePreferences {
 
   private static int movie_id = 0;
-  private static final  String my_api_key = BuildConfig.APPLICATION_ID;
+
+  private static final  String my_api_key = "PUT YOUR API KEY HERE";
+
 
    //By Most Popular Moview
   private static final String DEFAULT_MOVIE_ORDER = "https://api.themoviedb.org/3/movie/popular?api_key=" + my_api_key;

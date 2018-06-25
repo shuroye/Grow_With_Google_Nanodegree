@@ -12,11 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d13cca78-5e71-47f5-a763-dd535c0b960d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values/movie.xml" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Data/GetMoviePreferences.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Data/GetMoviePreferences.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_movie_detail.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_movie_detail.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/gradle.properties" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,18 +50,30 @@
       <file leaf-file-name="GetMoviePreferences.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Data/GetMoviePreferences.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1248">
-              <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+            <state relative-caret-position="576">
+              <caret line="12" column="66" lean-forward="false" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movie.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/movie.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Movie.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Model/Movie.java">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="480">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -2090,7 +2109,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Model/Movie.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Utils/JsonUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/MovieNetworkUtils/MovieNetworkUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/MovieDetailActivity.java" />
@@ -2098,6 +2116,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/MovieAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_movie_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/movie.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Data/GetMoviePreferences.java" />
       </list>
     </option>
@@ -2185,7 +2205,7 @@
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sandwich-club-starter-code" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../udacity/ud851-Sunshine/S01.02-Solution-AddWeatherList" />
     <property name="device.picker.selection" value="Nexus_5X_API_27" />
   </component>
   <component name="RunDashboard">
@@ -2396,7 +2416,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23203126" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32951444" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32951444" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -2517,14 +2537,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -2537,16 +2549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="768">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/MovieDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1776">
-          <caret line="45" column="49" lean-forward="false" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
-          <folding>
-            <element signature="e#1425#1450#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2585,65 +2587,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Model/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_movie_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
+        <state relative-caret-position="896">
           <caret line="65" column="50" lean-forward="true" selection-start-line="65" selection-start-column="50" selection-end-line="65" selection-end-column="50" />
           <folding>
-            <element signature="e#583#600#0" expanded="false" />
-            <element signature="e#635#650#0" expanded="false" />
-            <element signature="e#684#697#0" expanded="false" />
-            <element signature="e#729#742#0" expanded="false" />
-            <element signature="e#774#788#0" expanded="false" />
-            <element signature="e#821#834#0" expanded="false" />
-            <element signature="e#969#983#0" expanded="false" />
-            <element signature="e#1228#1243#0" expanded="false" />
-            <element signature="e#1331#1344#0" expanded="false" />
-            <element signature="e#1384#1397#0" expanded="false" />
-            <element signature="e#1435#1448#0" expanded="false" />
-            <element signature="e#1532#1564#0" expanded="false" />
-            <element signature="e#1835#1849#0" expanded="false" />
-            <element signature="e#1884#1898#0" expanded="false" />
-            <element signature="e#1928#1942#0" expanded="false" />
-            <element signature="e#2017#2030#0" expanded="false" />
-            <element signature="e#2069#2082#0" expanded="false" />
-            <element signature="e#2122#2135#0" expanded="false" />
-            <element signature="e#2175#2188#0" expanded="false" />
-            <element signature="e#2226#2239#0" expanded="false" />
-            <element signature="e#2586#2600#0" expanded="false" />
-            <element signature="e#2635#2649#0" expanded="false" />
-            <element signature="e#2679#2693#0" expanded="false" />
             <element signature="e#2768#2781#0" expanded="false" />
-            <element signature="e#2820#2833#0" expanded="false" />
-            <element signature="e#2873#2886#0" expanded="false" />
-            <element signature="e#2926#2939#0" expanded="false" />
-            <element signature="e#2977#2990#0" expanded="false" />
-            <element signature="e#3289#3303#0" expanded="false" />
-            <element signature="e#3338#3352#0" expanded="false" />
-            <element signature="e#3382#3396#0" expanded="false" />
-            <element signature="e#3471#3484#0" expanded="false" />
-            <element signature="e#3523#3536#0" expanded="false" />
-            <element signature="e#3576#3589#0" expanded="false" />
-            <element signature="e#3629#3642#0" expanded="false" />
-            <element signature="e#3680#3693#0" expanded="false" />
-            <element signature="e#3993#4007#0" expanded="false" />
-            <element signature="e#4042#4056#0" expanded="false" />
-            <element signature="e#4184#4197#0" expanded="false" />
-            <element signature="e#4236#4249#0" expanded="false" />
-            <element signature="e#4289#4302#0" expanded="false" />
-            <element signature="e#4342#4355#0" expanded="false" />
-            <element signature="e#4393#4406#0" expanded="false" />
-            <element signature="e#4710#4725#0" expanded="false" />
-            <element signature="e#4812#4825#0" expanded="false" />
-            <element signature="e#4865#4878#0" expanded="false" />
-            <element signature="e#4917#4930#0" expanded="false" />
-            <element signature="e#4970#4983#0" expanded="false" />
-            <element signature="e#5021#5034#0" expanded="false" />
-            <element signature="e#5355#5370#0" expanded="false" />
-            <element signature="e#5405#5418#0" expanded="false" />
-            <element signature="e#5457#5470#0" expanded="false" />
-            <element signature="e#5510#5523#0" expanded="false" />
-            <element signature="e#5561#5574#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2651,19 +2608,37 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Model/Movie.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/MovieDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="429">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/movie.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/strataanalytics/popularmoviesstage1/Data/GetMoviePreferences.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1248">
-          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="576">
+          <caret line="12" column="66" lean-forward="false" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -10,10 +10,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner  
 
-// Please ensure you have a valid API KEY for themoviedb.org   
- // A valid key will need to be entered
-    buildConfigField("String", "API_KEY", API_KEY)
-
    "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
