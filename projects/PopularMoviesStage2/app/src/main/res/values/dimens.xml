@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_dp">446dp</dimen>
+    <dimen name="w86_dp">86dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_28">28sp</dimen>
+    <dimen name="dp_170">170dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_362">362dp</dimen>
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="dp_368">368dp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+</resources>

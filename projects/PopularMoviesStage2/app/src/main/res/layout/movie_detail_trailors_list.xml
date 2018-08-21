@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+
+   <ImageButton
+       android:id="@+id/btnPlay"
+       android:layout_width="30dp"
+       android:layout_height="30dp"
+       android:background="@color/colorPrimary"
+       android:contentDescription="@string/play"
+       android:paddingEnd="2dp"
+       android:paddingLeft="2dp"
+       android:paddingStart="2dp"
+       android:scaleType="fitXY"
+       android:src="@android:drawable/ic_media_play" />
+
+   <TextView
+       android:id="@+id/trailer_id"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="40dp"
+       android:layout_marginStart="40dp"
+       app:layout_constraintStart_toStartOf="@+id/btnPlay"
+       android:textSize="12sp"/>
+   <View
+       android:id="@+id/trailer_divider_id"
+       android:layout_width="@dimen/dp_368"
+       android:layout_height="@dimen/dp_1"
+       android:layout_marginLeft="@dimen/dp_5"
+       android:layout_marginRight="@dimen/dp_2"
+       android:layout_marginStart="@dimen/dp_5"
+       android:layout_marginTop="@dimen/dp_5"
+       android:background="?android:attr/listDivider"
+
+       app:layout_constraintTop_toBottomOf="@+id/btnPlay"
+       android:layout_marginEnd="@dimen/dp_2" />
+</android.support.constraint.ConstraintLayout>
