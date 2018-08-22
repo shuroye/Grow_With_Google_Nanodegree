@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
                         recyclerView.setAdapter(favoriteMoviesAdapter);
                         favoriteMoviesAdapter.notifyDataSetChanged();
 
+
+
                     }else {
                         Toast.makeText(getApplicationContext(), "Favorite is empty",Toast.LENGTH_SHORT).show();
                     }
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
                 new ItemTouchHelper.SimpleCallback(0,
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
                     @Override
-                    public int getMovementFlags(@NonNull RecyclerView recyclerView,
+                    public int getMovementFlags(@NonNull RecyclerView rv,
                                                 @NonNull RecyclerView.ViewHolder viewHolder) {
                         return 0;
                     }

@@ -5,7 +5,7 @@ import com.strataanalytics.popularmoviesstage2.R;
 
 public  class  GetMoviePreferences {
 
-    private  final  String my_api_key = "YOUR API KEY";
+    private  final  String my_api_key = "6934f53708a2aa88621270ea9c7bc940";
     private final String append_videos_and_reviews = "&append_to_response=videos,reviews";
 
     private  int movie_id;
