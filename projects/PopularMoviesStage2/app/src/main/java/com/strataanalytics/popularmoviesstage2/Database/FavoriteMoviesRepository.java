@@ -8,21 +8,28 @@ import java.util.List;
 
 public class FavoriteMoviesRepository{
 
-    private FavoriteMoviesDao fMoviesDao;
+    private final FavoriteMoviesDao fMoviesDao;
     private LiveData<List<FavoriteMovies>> mAllFavoriteMovies;
+
+
 
     FavoriteMoviesRepository(Application application) {
 
-        FavoriteMoviesRoomDatabase fmdb = FavoriteMoviesRoomDatabase.getDatabase(application);
-
-        fMoviesDao = fmdb.favoriteMoviesDao();
+        FavoriteMoviesRoomDatabase db = FavoriteMoviesRoomDatabase.getDatabase(application);
+        fMoviesDao = db.favoriteMoviesDao();
         mAllFavoriteMovies = fMoviesDao.getAllFavMovies();
-
 
     }
 
     public LiveData<List<FavoriteMovies>> getAllFavoriteMovies() {
+
         return mAllFavoriteMovies;
+    }
+
+    public FavoriteMovies getFavoriteMovie(FavoriteMovies favoriteMovies){
+        List<FavoriteMovies>  movieList;
+        movieList = fMoviesDao.getFavoriteMovie(favoriteMovies.getFav());
+       return (FavoriteMovies) movieList;
     }
 
     public void insert (FavoriteMovies favoriteMovies) {

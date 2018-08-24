@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,12 +26,14 @@ import com.strataanalytics.popularmoviesstage2.Model.Movie;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
-    Movie movie;
-    RecyclerView recyclerView;
-    MovieDetailVideoAdapter adapter;
-    String strBaseUrl = "http://image.tmdb.org/t/p/w342/";
+    private Movie movie;
+    public RecyclerView recyclerView;
+    private MovieDetailVideoAdapter adapter;
+    public String strBaseUrl = "http://image.tmdb.org/t/p/w342/";
 
-    FavoriteMoviesViewModel favoriteMoviesViewModel;
+    public String strMarkAsFav = "Mark As Favorite";
+    public String strRemoveFav = "Remove Favorite";
+    private FavoriteMoviesViewModel favoriteMoviesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.image_iv);
         TextView release_dt_tv = findViewById(R.id.release_dt_tv);
         TextView mov_runtime_tv = findViewById(R.id.movie_duration_tv);
-        TextView mov_fav_tv = findViewById(R.id.movie_fav_tv);
+       final TextView mov_fav_tv = findViewById(R.id.movie_fav_tv);
         TextView mov_overview_tv = findViewById(R.id.movie_overview_tv);
         TextView movie_rating_tv = findViewById(R.id.movie_rating_tv);
         TextView trailer_tv = findViewById(R.id.trailer_txt);
@@ -66,22 +69,27 @@ public class MovieDetailActivity extends AppCompatActivity {
             mov_runtime_tv.setText(runtime);
             movie_rating_tv.setText(vote_average);
 
-            mov_fav_tv.setText(R.string.MAF);
+            mov_fav_tv.setText(strMarkAsFav);
             mov_overview_tv.setText(movie.getOverview());
 
 
             final String strFAV = strBaseUrl + movie.getStrPoster_path();
 
+
             mov_fav_tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                    try {
-
+                   String mv = "http://image.tmdb.org/t/p/w342//7WsyChQLEftFiDOVTGkv3hFpyyt.jpg";
                     //view model
                       FavoriteMovies favoriteMovies = new FavoriteMovies( strFAV,movie.getIntId());
-                     favoriteMoviesViewModel.insert(favoriteMovies);
 
-                    Toast.makeText(getApplicationContext(), "Movie movie added to favorites. ",Toast.LENGTH_SHORT).show();
+                     favoriteMoviesViewModel.insert(favoriteMovies);
+                    // String result = favoriteMoviesViewModel.getMovie(strFAV);
+                      Log.d("XXX", String.valueOf(favoriteMoviesViewModel.getMovie(favoriteMovies)));
+                  //  favoriteMoviesViewModel.deleteFavoriteMovie(favoriteMovies);
+                       mov_fav_tv.setText(strRemoveFav);
+                       Toast.makeText(getApplicationContext(), "Movie movie added to favorites. ",Toast.LENGTH_SHORT).show();
                   }catch (SQLiteConstraintException e){
                        Toast.makeText(getApplicationContext(),e.getMessage() ,Toast.LENGTH_SHORT).show();
                    }

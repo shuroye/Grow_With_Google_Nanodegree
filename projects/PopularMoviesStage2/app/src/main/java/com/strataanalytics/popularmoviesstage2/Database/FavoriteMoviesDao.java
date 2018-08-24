@@ -15,6 +15,7 @@ public interface FavoriteMoviesDao {
     @Query("SELECT * from favMovie_table ORDER BY fav_movie ASC")
     LiveData<List<FavoriteMovies>> getAllFavMovies();
 
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertFavMovie(FavoriteMovies favoriteMovies);
 
@@ -23,4 +24,7 @@ public interface FavoriteMoviesDao {
 
     @Delete
     void deleteFavorite(FavoriteMovies favoriteMovies);
+
+    @Query("SELECT * from favMovie_table WHERE fav_movie = :str_movie")
+           List<FavoriteMovies> getFavoriteMovie(String str_movie);
 }

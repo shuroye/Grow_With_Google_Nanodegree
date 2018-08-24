@@ -7,6 +7,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 @Database(entities = {FavoriteMovies.class}, version = 2)
 public abstract class FavoriteMoviesRoomDatabase extends RoomDatabase{
@@ -47,13 +48,21 @@ public abstract class FavoriteMoviesRoomDatabase extends RoomDatabase{
 
         private final FavoriteMoviesDao fDao;
 
+
+
         PopulateDbAsync(FavoriteMoviesRoomDatabase db) {
             fDao = db.favoriteMoviesDao();
+
         }
 
         @Override
         protected Void doInBackground(final Void... params) {
-                  return null;
+         //  FavoriteMovies f = new FavoriteMovies("http://image.tmdb.org/t/p/w342//7WsyChQLEftFiDOVTGkv3hFpyyt.jpg", 1);
+          //  fDao.deleteFavorite(f);
+            //fDao.deleteAll();
+           //  FavoriteMovies[] str = fDao.getFavoriteMovie(f.getFav());
+           // Log.d("TEST2", str[0].getFavPos() + "");
+            return null;
         }
 
      }
