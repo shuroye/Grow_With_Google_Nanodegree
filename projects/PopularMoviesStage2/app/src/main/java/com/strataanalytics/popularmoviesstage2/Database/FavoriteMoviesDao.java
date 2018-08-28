@@ -19,8 +19,8 @@ public interface FavoriteMoviesDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertFavMovie(FavoriteMovies favoriteMovies);
 
-    @Query("DELETE FROM favMovie_table")
-    void deleteAll();
+  //  @Query("DELETE FROM favMovie_table")
+   // void deleteAll();
 
     @Delete
     void deleteFavorite(FavoriteMovies favoriteMovies);

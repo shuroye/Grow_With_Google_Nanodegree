@@ -77,11 +77,11 @@ public class MovieDetailActivity extends AppCompatActivity {
                  result = favoriteMoviesViewModel.vFavoriteMovie(new FavoriteMovies(strFAV,movie.getIntId()));
                 if(result != null) {
                     //Movie does not exist in favorites
-                    String strRemoveFav = "Remove Favorite";
+                    String strRemoveFav = getString(R.string.removeFav);
                     mov_fav_tv.setText(strRemoveFav);
                     removeFavoriteMovie(new FavoriteMovies(strFAV, movie.getIntId()));
                 }else{
-                    String strMarkAsFav = "Mark As Favorite";
+                    String strMarkAsFav = getString(R.string.MAF);
                     mov_fav_tv.setText(strMarkAsFav);
                     addFavoriteMovie(new FavoriteMovies(strFAV, movie.getIntId()));
                 }
@@ -91,7 +91,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             }
             //set trailer text if there is a trailer
             if(movie.getvideoList() != null){
-                String trailerHeader = "Trailers:";
+                String trailerHeader = getString(R.string.Trailers);
                 trailer_tv.setText(trailerHeader);
             }
 
@@ -102,7 +102,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
 
         }else {
-            System.out.println("System Error");
+            System.out.println(getString(R.string.SysErr));
 
         }
     }
@@ -117,7 +117,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                     newFav = favoriteMovies;
                     favoriteMoviesViewModel.insert(newFav);
 
-                    Toast.makeText(getApplicationContext(), "Movie movie added to favorites. ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.FavAdd,Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(),e.getMessage() ,Toast.LENGTH_SHORT).show();
                 }
@@ -136,7 +136,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                     FavoriteMovies newFav;
                     newFav = favoriteMovies;
                     favoriteMoviesViewModel.deleteFavoriteMovie(newFav);
-                    Toast.makeText(getApplicationContext(), "Movie movie removed favorites. ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.FavRemove,Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(),e.getMessage() ,Toast.LENGTH_SHORT).show();
 
@@ -159,7 +159,7 @@ public class MovieDetailActivity extends AppCompatActivity {
        if(item.getItemId() == R.id.reviews_menu_id) {
            Intent intent = new Intent();
            intent.setClass(this.getApplicationContext(), MovieDetailReviewsActivity.class);
-           intent.putExtra("MOVIE_DETAIL_REVIEWS", movie);
+           intent.putExtra(getString(R.string.Detail_Package), movie);
            this.startActivity(intent);
        }
        adapter.notifyDataSetChanged();

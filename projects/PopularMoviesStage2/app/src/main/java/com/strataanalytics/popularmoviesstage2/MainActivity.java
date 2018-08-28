@@ -2,13 +2,11 @@ package com.strataanalytics.popularmoviesstage2;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.setTitle("Pop Movies");
+        this.setTitle(getString(R.string.POPMOV));
         bolFav_view = false;
         loadMovies();
 
@@ -62,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
         int itemSelected_id = item.getItemId();
 
         if(itemSelected_id == R.id.sort_top_rating_id) {
-            this.setTitle("Pop Movies - top rated");
+            this.setTitle(getString(R.string.top_rated));
             movieOrder = 1;
             item.setChecked(true);
             loadMovies();
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
 
         }else if (itemSelected_id == R.id.fav_menu){
 
-            this.setTitle("Favorite Movies");
+            this.setTitle(getString(R.string.fav));
             bolFav_view = true;
         //   favoriteMoviesViewModel = ViewModelProviders.of(this).get(FavoriteMoviesViewModel.class);
 
@@ -91,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
 
 
                     }else {
-                        Toast.makeText(getApplicationContext(), "Favorite is empty",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.emp_msg,Toast.LENGTH_SHORT).show();
                     }
                 }
             });

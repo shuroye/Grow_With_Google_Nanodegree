@@ -9,5 +9,15 @@
     <string name="MIN">MIN</string>
     <string name="MAF">MARK AS \n FAVORITE </string>
     <string name="play">Play</string>
+    <string name="removeFav">Remove Favorite</string>
+    <string name="Trailers">Trailers:</string>
+    <string name="SysErr">System Error</string>
+    <string name="FavAdd">Movie movie added to favorites.</string>
+    <string name="FavRemove">Movie movie removed favorites.</string>
+    <string name="Detail_Package">MOVIE_DETAIL_REVIEWS</string>
+    <string name="fav">Favorite Movies</string>
+    <string name="POPMOV">Pop Movies</string>
+    <string name="top_rated">Pop Movies - top rated</string>
+    <string name="emp_msg">Favorite is empty</string>
 </resources>
 
