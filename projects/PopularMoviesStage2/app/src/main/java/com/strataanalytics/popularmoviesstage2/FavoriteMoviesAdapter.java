@@ -192,9 +192,6 @@ public  class FavoriteMoviesAdapter extends RecyclerView.Adapter <FavoriteMovies
 
     }
 
-    public FavoriteMovies getFavMoviePosition(int position){
-         return movieList.get(position);
-    }
 
     private void launchMovieDetailActivity(Movie movie){
          if (movie != null) {

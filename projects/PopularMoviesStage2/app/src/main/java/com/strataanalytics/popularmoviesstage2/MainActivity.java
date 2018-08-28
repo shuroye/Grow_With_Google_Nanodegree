@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_activity_settings, menu);
-        removeFavoriteMovie();
+        favoriteMoviesViewModel = ViewModelProviders.of(this).get(FavoriteMoviesViewModel.class);
         return true;
     }
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
 
             this.setTitle("Favorite Movies");
             bolFav_view = true;
-           favoriteMoviesViewModel = ViewModelProviders.of(this).get(FavoriteMoviesViewModel.class);
+        //   favoriteMoviesViewModel = ViewModelProviders.of(this).get(FavoriteMoviesViewModel.class);
 
            //create the observer for the favorite movies
             favoriteMoviesViewModel.getAllFavoriteMovies().observe(this, new Observer<List<FavoriteMovies>>() {
@@ -95,8 +95,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
                     }
                 }
             });
-           //Remove movie from favorite
-           removeFavoriteMovie();
+
 
         }else{
             this.setTitle("Pop Movies");
@@ -145,40 +144,7 @@ public class MainActivity extends AppCompatActivity implements MovieAsyncRespons
         launchBackGroundTask.launch();
     }
 
-    public void removeFavoriteMovie() {
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
-                new ItemTouchHelper.SimpleCallback(0,
-                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-                    @Override
-                    public int getMovementFlags(@NonNull RecyclerView rv,
-                                                @NonNull RecyclerView.ViewHolder viewHolder) {
-                        return 0;
-                    }
 
-                    @Override
-                    public boolean onMove(@NonNull RecyclerView recyclerView,
-                                          @NonNull RecyclerView.ViewHolder viewHolder,
-                                          @NonNull RecyclerView.ViewHolder targetViewHolder) {
-                        return false;
-                    }
-
-                    @Override
-                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                        int position = viewHolder.getAdapterPosition();
-                        FavoriteMovies favoriteMovies = favoriteMoviesAdapter.getFavMoviePosition(position);
-
-                        //Delete favorite movie
-                         favoriteMoviesViewModel.deleteFavoriteMovie(favoriteMovies);
-
-                         favoriteMoviesAdapter.notifyDataSetChanged();
-
-                         Toast.makeText(getApplicationContext(), "movie removed!", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-        );
-        itemTouchHelper.attachToRecyclerView(recyclerView);
-    }
 }
 
 

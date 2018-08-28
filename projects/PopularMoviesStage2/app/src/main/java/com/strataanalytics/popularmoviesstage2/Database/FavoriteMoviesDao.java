@@ -26,5 +26,5 @@ public interface FavoriteMoviesDao {
     void deleteFavorite(FavoriteMovies favoriteMovies);
 
     @Query("SELECT * from favMovie_table WHERE fav_movie = :str_movie")
-           List<FavoriteMovies> getFavoriteMovie(String str_movie);
+           FavoriteMovies getFavoriteMovie(String str_movie);
 }

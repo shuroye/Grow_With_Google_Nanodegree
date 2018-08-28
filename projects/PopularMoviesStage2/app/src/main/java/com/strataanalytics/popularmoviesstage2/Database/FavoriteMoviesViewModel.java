@@ -29,10 +29,11 @@ public class FavoriteMoviesViewModel extends AndroidViewModel{
         favoriteMoviesRepository.delete(favoriteMovies);
     }
 
-   public FavoriteMovies getMovie(FavoriteMovies favoriteMovies){
-        FavoriteMovies fav;
-        fav = favoriteMoviesRepository.getFavoriteMovie(favoriteMovies);
+    public FavoriteMovies vFavoriteMovie(FavoriteMovies favoriteMovies){
+        FavoriteMovies myFavoriteMovie;
+        myFavoriteMovie = favoriteMoviesRepository.getMovie(favoriteMovies);
+        return myFavoriteMovie;
+    }
 
-        return  fav;
-   }
+
 }

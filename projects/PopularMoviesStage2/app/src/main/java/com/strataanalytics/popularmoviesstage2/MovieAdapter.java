@@ -1,5 +1,6 @@
 package com.strataanalytics.popularmoviesstage2;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.strataanalytics.popularmoviesstage2.Data.GetMoviePreferences;
+import com.strataanalytics.popularmoviesstage2.Database.FavoriteMoviesDao;
+import com.strataanalytics.popularmoviesstage2.Database.FavoriteMoviesViewModel;
 import com.strataanalytics.popularmoviesstage2.Model.Movie;
 import com.squareup.picasso.Picasso;
 import com.strataanalytics.popularmoviesstage2.MovieNetworkUtils.MovieAsyncResponse;

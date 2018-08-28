@@ -11,7 +11,7 @@ public class FavoriteMoviesRepository{
     private final FavoriteMoviesDao fMoviesDao;
     private LiveData<List<FavoriteMovies>> mAllFavoriteMovies;
 
-
+    private static FavoriteMovies mFavoriteMovie;
 
     FavoriteMoviesRepository(Application application) {
 
@@ -26,19 +26,11 @@ public class FavoriteMoviesRepository{
         return mAllFavoriteMovies;
     }
 
-    public FavoriteMovies getFavoriteMovie(FavoriteMovies favoriteMovies){
-        List<FavoriteMovies>  movieList;
-        movieList = fMoviesDao.getFavoriteMovie(favoriteMovies.getFav());
-       return (FavoriteMovies) movieList;
-    }
 
     public void insert (FavoriteMovies favoriteMovies) {
         new insertAsyncTask(fMoviesDao).execute(favoriteMovies);
     }
 
-    public void delete(FavoriteMovies favoriteMovies){
-        new deleteAsyncTask(fMoviesDao).execute(favoriteMovies);
-    }
 
     private static class insertAsyncTask extends AsyncTask<FavoriteMovies, Void, Void> {
 
@@ -55,6 +47,10 @@ public class FavoriteMoviesRepository{
         }
     }
 
+    public void delete(FavoriteMovies favoriteMovies){
+        new deleteAsyncTask(fMoviesDao).execute(favoriteMovies);
+    }
+
     private static class deleteAsyncTask extends AsyncTask<FavoriteMovies, Void, Void> {
 
         private FavoriteMoviesDao fAsyncTaskDao;
@@ -69,4 +65,28 @@ public class FavoriteMoviesRepository{
             return null;
         }
     }
+
+    public FavoriteMovies getMovie(FavoriteMovies favoriteMovies){
+        new movieAsyncTask(fMoviesDao).execute(favoriteMovies);
+
+        return mFavoriteMovie;
+    }
+
+    private static class movieAsyncTask extends AsyncTask<FavoriteMovies, Void, FavoriteMovies> {
+
+        private FavoriteMoviesDao fAsyncTaskDao;
+
+        movieAsyncTask(FavoriteMoviesDao dao) {
+            fAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected FavoriteMovies doInBackground(final FavoriteMovies... params) {
+          mFavoriteMovie =  fAsyncTaskDao.getFavoriteMovie(params[0].getFav());
+            return mFavoriteMovie;
+        }
+
+
+    }
+
 }

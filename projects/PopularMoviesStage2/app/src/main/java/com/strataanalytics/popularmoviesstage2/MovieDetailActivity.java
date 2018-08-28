@@ -2,12 +2,10 @@ package com.strataanalytics.popularmoviesstage2;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.database.sqlite.SQLiteConstraintException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,32 +29,34 @@ public class MovieDetailActivity extends AppCompatActivity {
     private MovieDetailVideoAdapter adapter;
     public String strBaseUrl = "http://image.tmdb.org/t/p/w342/";
 
-    public String strMarkAsFav = "Mark As Favorite";
-    public String strRemoveFav = "Remove Favorite";
     private FavoriteMoviesViewModel favoriteMoviesViewModel;
+    public  TextView mov_fav_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
+        Intent intent = getIntent();
         this.setTitle("MovieDetail");
 
 
-        Intent intent = getIntent();
-        favoriteMoviesViewModel = ViewModelProviders.of(this).get(FavoriteMoviesViewModel.class);
-        movie = intent.getParcelableExtra("MOVIE_DETAIL");
 
-        TextView title_tv =  findViewById(R.id.title_TextView);
+         favoriteMoviesViewModel = ViewModelProviders.of(this).get(FavoriteMoviesViewModel.class);
+         movie = intent.getParcelableExtra("MOVIE_DETAIL");
+
+        TextView title_tv = findViewById(R.id.title_TextView);
         ImageView imageView = findViewById(R.id.image_iv);
         TextView release_dt_tv = findViewById(R.id.release_dt_tv);
         TextView mov_runtime_tv = findViewById(R.id.movie_duration_tv);
-       final TextView mov_fav_tv = findViewById(R.id.movie_fav_tv);
+         mov_fav_tv = findViewById(R.id.movie_fav_tv);
         TextView mov_overview_tv = findViewById(R.id.movie_overview_tv);
         TextView movie_rating_tv = findViewById(R.id.movie_rating_tv);
         TextView trailer_tv = findViewById(R.id.trailer_txt);
 
-        recyclerView = findViewById(R.id.movie_trailers_recycler_v);
+         recyclerView = findViewById(R.id.movie_trailers_recycler_v);
+         String strFAV = strBaseUrl + movie.getStrPoster_path();
+
         if(movie != null){
             String runtime = movie.getRuntime();
             String mTitle = movie.getTitle();
@@ -69,33 +69,26 @@ public class MovieDetailActivity extends AppCompatActivity {
             mov_runtime_tv.setText(runtime);
             movie_rating_tv.setText(vote_average);
 
-            mov_fav_tv.setText(strMarkAsFav);
+
             mov_overview_tv.setText(movie.getOverview());
+            FavoriteMovies result;
+            try{
 
-
-            final String strFAV = strBaseUrl + movie.getStrPoster_path();
-
-
-            mov_fav_tv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                   try {
-                   String mv = "http://image.tmdb.org/t/p/w342//7WsyChQLEftFiDOVTGkv3hFpyyt.jpg";
-                    //view model
-                      FavoriteMovies favoriteMovies = new FavoriteMovies( strFAV,movie.getIntId());
-
-                     favoriteMoviesViewModel.insert(favoriteMovies);
-                    // String result = favoriteMoviesViewModel.getMovie(strFAV);
-                      Log.d("XXX", String.valueOf(favoriteMoviesViewModel.getMovie(favoriteMovies)));
-                  //  favoriteMoviesViewModel.deleteFavoriteMovie(favoriteMovies);
-                       mov_fav_tv.setText(strRemoveFav);
-                       Toast.makeText(getApplicationContext(), "Movie movie added to favorites. ",Toast.LENGTH_SHORT).show();
-                  }catch (SQLiteConstraintException e){
-                       Toast.makeText(getApplicationContext(),e.getMessage() ,Toast.LENGTH_SHORT).show();
-                   }
+                 result = favoriteMoviesViewModel.vFavoriteMovie(new FavoriteMovies(strFAV,movie.getIntId()));
+                if(result != null) {
+                    //Movie does not exist in favorites
+                    String strRemoveFav = "Remove Favorite";
+                    mov_fav_tv.setText(strRemoveFav);
+                    removeFavoriteMovie(new FavoriteMovies(strFAV, movie.getIntId()));
+                }else{
+                    String strMarkAsFav = "Mark As Favorite";
+                    mov_fav_tv.setText(strMarkAsFav);
+                    addFavoriteMovie(new FavoriteMovies(strFAV, movie.getIntId()));
                 }
-            });
 
+            }catch (Exception e){
+                 e.printStackTrace();
+            }
             //set trailer text if there is a trailer
             if(movie.getvideoList() != null){
                 String trailerHeader = "Trailers:";
@@ -106,12 +99,53 @@ public class MovieDetailActivity extends AppCompatActivity {
             adapter = new MovieDetailVideoAdapter(this, movie.getvideoList());
             recyclerView.setAdapter(adapter);
 
+
+
         }else {
             System.out.println("System Error");
 
         }
     }
 
+    public void addFavoriteMovie(final FavoriteMovies favoriteMovies){
+
+        mov_fav_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    FavoriteMovies newFav;
+                    newFav = favoriteMovies;
+                    favoriteMoviesViewModel.insert(newFav);
+
+                    Toast.makeText(getApplicationContext(), "Movie movie added to favorites. ",Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),e.getMessage() ,Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+    }
+
+    public void removeFavoriteMovie(final FavoriteMovies favoriteMovies){
+
+        mov_fav_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    FavoriteMovies newFav;
+                    newFav = favoriteMovies;
+                    favoriteMoviesViewModel.deleteFavoriteMovie(newFav);
+                    Toast.makeText(getApplicationContext(), "Movie movie removed favorites. ",Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),e.getMessage() ,Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -131,4 +165,7 @@ public class MovieDetailActivity extends AppCompatActivity {
        adapter.notifyDataSetChanged();
         return super.onOptionsItemSelected(item);
     }
+
+
 }
+
