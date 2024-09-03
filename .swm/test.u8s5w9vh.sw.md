@@ -1,14 +1,14 @@
 ---
 title: test
 ---
-<SwmSnippet path="/projects/sandwich-club-starter-code/app/src/main/java/com/udacity/sandwichclub/model/Sandwich.java" line="20">
+<SwmSnippet path="projects/sandwich-club-starter-code/app/src/main/java/com/udacity/sandwichclub/model/Sandwich.java" line="5">
 
 ---
 
 Sanwich
 
-```java
-    public Sandwich(String mainName, List<String> alsoKnownAs, String placeOfOrigin, String description, String image, List<String> ingredients) {
+```
+public class Sandwich {
 ```
 
 ---
